@@ -27,6 +27,13 @@ fetch('/api/test', {
 ### csrf
 - cookieName in doubleCsrf options
 
+### database
+- If there is an error when migrating, check your migration file and make changes.
+- If there is no error when migrating, but you want to change the migration file afterwards, undo the migration first, change the file, then migrate again.
+
+- If there is an error with seeding, check your seed file and make changes.\
+- If there is no error in seeding but you want to change the seed file, remember to undo the seed first, change the file, then seed again.
+
 
 
 ## Frontend
