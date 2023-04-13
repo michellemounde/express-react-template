@@ -9,13 +9,13 @@ const { csrfToken } = await fetch('/api/csrf/restore').then(res => res.json());
 console.log(typeof csrfToken);
 console.log(csrfToken);
 
-fetch('/api/test', {
+fetch('/api/session', {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
       "x-csrf-token": csrfToken
     },
-    body: JSON.stringify({ hello: 'world' })
+    body: JSON.stringify({ credential: 'demo@user.io', password: 'Hello World!' })
   })
   .then(res => res.json())
   .then(data => console.log(data));
