@@ -9,6 +9,7 @@ const router = express.Router();
 
 
 // Log in
+// POST /api/session
 router.post(
   '/',
   async (req, res, next) => {
@@ -45,11 +46,33 @@ router.post(
 
 
 // Log out
+// DELETE /api/session
 router.delete(
   '/',
   (_req, res) => {
     res.clearCookie('token');
     return res.json({ message: 'success' });
+  }
+)
+
+
+// Restore session user
+// GET /api/session
+router.get(
+  '/',
+  restoreUser,
+  (req, res) => {
+    const { user } = req;
+    if (user) {
+      const safeUser = {
+        id: user.id,
+        email: user.email,
+        username: user.username
+      }
+      return res.json({ user: safeUser })
+    } else {
+      return res.json({ user: null })
+    }
   }
 )
 

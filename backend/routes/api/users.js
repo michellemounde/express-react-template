@@ -8,6 +8,7 @@ const router = express.Router();
 
 
 // Sign up
+// POST /api/users
 router.post(
   '/',
   async (req, res) => {
