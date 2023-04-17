@@ -1,1 +1,1 @@
-# Express React Skeleton Test 3
+# Express React Skeleton
