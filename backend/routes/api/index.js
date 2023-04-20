@@ -12,10 +12,6 @@ router.use('/session', sessionRouter);
 
 router.use('/users', usersRouter);
 
-// POST api/test
-router.post('/test', (req, res) => {
-  res.json({ requestBody: req.body })
-})
 
 
 module.exports = router;

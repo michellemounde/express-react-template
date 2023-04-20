@@ -21,20 +21,20 @@ app.use(cookieParser());
 app.use(express.json());
 
 /* This is the default CSRF protection middleware. */
-const { doubleCsrfProtection, generateToken } =
+const { doubleCsrfProtection } =
   doubleCsrf({
     // The only required option is getSecret, the rest have sensible defaults (shown below) other than cookieOptions edited as per AAO
     getSecret: (req) => req.secret,
-    cookieName: isProduction && '__Host-test.x-csrf-token' || 'Test.x-csrf-token', // The name of the cookie to be used, recommend using `__Host-` prefix.
+    cookieName: isProduction && '__Host-test.X-CSRF-Token' || 'Test.X-CSRF-Token', // The name of the cookie to be used, recommend using `__Host-` prefix.
     cookieOptions: {
       httpOnly: true,
-      sameSite: isProduction && 'Lax', // Recommend you make this strict if possible
+      sameSite: isProduction && 'Strict', // Recommend you make this strict if possible
       secure: isProduction,
       path: "/"
     },
     size: 64, // The size of the generated tokens in bits
     ignoredMethods: ['GET', 'HEAD', 'OPTIONS'],
-    getTokenFromRequest: (req) => req.headers["x-csrf-token"] // A function that returns the token from the request
+    getTokenFromRequest: (req) => req.headers['x-csrf-token'] // A function that returns the token from the request
   });
 
 
