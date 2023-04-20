@@ -8,8 +8,12 @@ import './index.css';
 import App from './App';
 
 import store from './store';
+import { restoreCsrf, csrfFetch } from './store/csrf';
 
 if (process.env.NODE_ENV !== 'production') {
+  restoreCsrf();
+
+  window.csrfFetch = csrfFetch;
   window.store = store;
 }
 
