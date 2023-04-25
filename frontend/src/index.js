@@ -10,11 +10,14 @@ import App from './App';
 import store from './store';
 import { restoreCsrf, csrfFetch } from './store/csrf';
 
+import * as sessionActions from './store/session';
+
 if (process.env.NODE_ENV !== 'production') {
   restoreCsrf();
 
   window.csrfFetch = csrfFetch;
   window.store = store;
+  window.sessionActions = sessionActions;
 }
 
 function Root() {

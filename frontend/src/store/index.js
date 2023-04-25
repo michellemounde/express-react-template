@@ -1,7 +1,11 @@
 import { configureStore } from '@reduxjs/toolkit';
 import logger from 'redux-logger';
 
-const rootReducer = ({ });
+import sessionReducer from './session';
+
+const rootReducer = ({
+  session: sessionReducer
+});
 
 const preloadedState = {};
 
