@@ -13,7 +13,7 @@ const LoginFormPage = () => {
 
   const [credential, setCredential] = useState('');
   const [password, setPassword] = useState('');
-  const [errors, setErrors] = useState([]);
+  const [errors, setErrors] = useState({});
 
   if (sessionUser) return <Redirect to='/' />;
 
@@ -36,31 +36,29 @@ const LoginFormPage = () => {
     <>
       <h2>Log In</h2>
       <form onSubmit={handleSubmit}>
-      <ul>
-        {errors.map((err, idx) => <li key={idx}>{err}</li>)}
-      </ul>
-      <label>
-        Username or Email
-        <input
-          type='text'
-          placeholder='Enter username or email'
-          required
-          value={credential}
-          onChange={(e) => setCredential(e.target.value)}
-        />
-      </label>
-      <label>
-        Password
-        <input
-          type='text'
-          placeholder='Enter password'
-          required
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-        />
-      </label>
-      <button type='submit'>Log In</button>
-    </form>
+        {errors.credential && <p>{errors.credential}</p>}
+        <label>
+          Username or Email
+          <input
+            type='text'
+            placeholder='Enter username or email'
+            required
+            value={credential}
+            onChange={(e) => setCredential(e.target.value)}
+          />
+        </label>
+        <label>
+          Password
+          <input
+            type='text'
+            placeholder='Enter password'
+            required
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+          />
+        </label>
+        <button type='submit'>Log In</button>
+      </form>
     </>
 
   )
