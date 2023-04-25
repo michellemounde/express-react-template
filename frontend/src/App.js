@@ -3,6 +3,7 @@ import { useDispatch } from 'react-redux';
 import { Switch, Route } from 'react-router-dom';
 
 import LoginFormPage from './components/LoginFormPage';
+import SignupFormPage from './components/SignupFormPage';
 
 import './App.css';
 
@@ -23,6 +24,9 @@ function App() {
       <Switch>
         <Route path='/login'>
           <LoginFormPage />
+        </Route>
+        <Route path='/signup'>
+          <SignupFormPage />
         </Route>
       </Switch>
     </>
