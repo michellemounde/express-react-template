@@ -1,15 +1,13 @@
 import { useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { Redirect } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
 
 import './SignupForm.css';
 
 import * as sessionActions from '../../store/session';
+import { useModal } from '../../context/Modal';
 
-const SignupFormPage = () => {
+const SignupFormModal = () => {
   const dispatch = useDispatch();
-
-  const sessionUser = useSelector(state => state.session.user);
 
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
@@ -19,7 +17,7 @@ const SignupFormPage = () => {
   const [confirmPassword, setConfirmPassword] = useState('');
   const [errors, setErrors] = useState({});
 
-  if (sessionUser) return <Redirect to='/' />
+  const { closeModal } = useModal();
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -34,6 +32,7 @@ const SignupFormPage = () => {
       }
 
       return dispatch(sessionActions.signup(payload))
+        .then(closeModal)
         .catch(async (res) => {
           const data = await res.json();
           if (data && data.errors) setErrors(data.errors);
@@ -129,4 +128,4 @@ const SignupFormPage = () => {
   )
 }
 
-export default SignupFormPage;
+export default SignupFormModal;

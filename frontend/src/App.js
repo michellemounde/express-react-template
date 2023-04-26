@@ -4,8 +4,6 @@ import { Switch, Route } from 'react-router-dom';
 
 import './App.css';
 
-import LoginFormPage from './components/LoginFormModal';
-import SignupFormPage from './components/SignupFormPage';
 import Navigation from './components/Navigation';
 
 import * as sessionActions from './store/session';
@@ -25,12 +23,6 @@ function App() {
       <h1>Express React Skeleton</h1>
       {isLoaded && (
         <Switch>
-          <Route path='/login'>
-            <LoginFormPage />
-          </Route>
-          <Route path='/signup'>
-            <SignupFormPage />
-          </Route>
        </Switch>
       )}
     </>
