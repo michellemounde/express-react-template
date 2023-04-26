@@ -1,12 +1,12 @@
 import { useSelector } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 
-import './Navigation.css';
-
 import ProfileButton from './ProfileButton';
 import OpenModalButton from '../OpenModalButton';
 import LoginFormModal from '../LoginFormModal';
 import SignupFormModal from '../SignupFormModal';
+
+import './Navigation.css';
 
 const Navigation = ({ isLoaded }) => {
   const user = useSelector(state => state.session.user);

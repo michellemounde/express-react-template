@@ -2,11 +2,11 @@ import { useState, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { Switch, Route } from 'react-router-dom';
 
-import './App.css';
-
 import Navigation from './components/Navigation';
 
 import * as sessionActions from './store/session';
+
+import './App.css';
 
 function App() {
   const dispatch = useDispatch();
