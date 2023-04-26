@@ -31,19 +31,30 @@ const ProfileButton = ({ user }) => {
     if(!showMenu) setShowMenu(true);
   }
 
-  const profileMenu = ( user &&
+  const closeMenu = () => setShowMenu(false);
+
+  const logoutUser = () => {
+    dispatch(logout());
+    closeMenu();
+  }
+
+  const profileMenu = (user &&
     <>
       <li>{user.username}</li>
       <li>{user.firstName} {user.lastName}</li>
       <li>{user.email}</li>
-      <li><button onClick={() => dispatch(logout())}>Log Out</button></li>
+      <li><button onClick={logoutUser}>Log Out</button></li>
     </>
   )
 
   const registrations = (
     <>
-      <li><OpenModalButton buttonText='Log In' modalComponent={<LoginFormModal />}/></li>
-      <li><OpenModalButton buttonText='Sign Up' modalComponent={<SignupFormModal />}/></li>
+      <li>
+        <OpenModalButton buttonText='Log In' onButtonClick={closeMenu} modalComponent={<LoginFormModal />}/>
+      </li>
+      <li>
+        <OpenModalButton buttonText='Sign Up' onButtonClick={closeMenu} modalComponent={<SignupFormModal />}/>
+        </li>
     </>
   )
 
