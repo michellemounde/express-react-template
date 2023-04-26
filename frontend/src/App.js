@@ -2,10 +2,11 @@ import { useState, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { Switch, Route } from 'react-router-dom';
 
+import './App.css';
+
 import LoginFormPage from './components/LoginFormPage';
 import SignupFormPage from './components/SignupFormPage';
-
-import './App.css';
+import Navigation from './components/Navigation';
 
 import * as sessionActions from './store/session';
 
@@ -20,15 +21,18 @@ function App() {
 
   return isLoaded && (
     <>
+      <Navigation isLoaded={isLoaded} />
       <h1>Express React Skeleton</h1>
-      <Switch>
-        <Route path='/login'>
-          <LoginFormPage />
-        </Route>
-        <Route path='/signup'>
-          <SignupFormPage />
-        </Route>
-      </Switch>
+      {isLoaded && (
+        <Switch>
+          <Route path='/login'>
+            <LoginFormPage />
+          </Route>
+          <Route path='/signup'>
+            <SignupFormPage />
+          </Route>
+       </Switch>
+      )}
     </>
   );
 }
