@@ -4,6 +4,8 @@ import { NavLink } from 'react-router-dom';
 import './Navigation.css';
 
 import ProfileButton from './ProfileButton';
+import OpenModalButton from '../OpenModalButton';
+import LoginFormModal from '../LoginFormModal';
 
 const Navigation = ({ isLoaded }) => {
   const user = useSelector(state => state.session.user);
@@ -17,7 +19,7 @@ const Navigation = ({ isLoaded }) => {
   } else {
     content = (
       <div className='registrations'>
-        <li><NavLink activeClassName='active' to='/login' exact>Log In</NavLink></li>
+        <li><OpenModalButton buttonText='Log In' modalComponent={<LoginFormModal />}/></li>
         <li><NavLink activeClassName='active' to='/signup' exact>Sign Up</NavLink></li>
       </div>
     )
