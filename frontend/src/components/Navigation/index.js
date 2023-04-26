@@ -16,7 +16,7 @@ const Navigation = ({ isLoaded }) => {
     )
   } else {
     content = (
-      <div class='registrations'>
+      <div className='registrations'>
         <li><NavLink activeClassName='active' to='/login' exact>Log In</NavLink></li>
         <li><NavLink activeClassName='active' to='/signup' exact>Sign Up</NavLink></li>
       </div>

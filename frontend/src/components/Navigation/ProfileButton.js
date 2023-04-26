@@ -1,9 +1,26 @@
+import { useState, useEffect } from 'react'
 import { useDispatch } from 'react-redux';
 
 import { logout } from '../../store/session';
 
 const ProfileButton = ({ user }) => {
   const dispatch = useDispatch();
+  const [showMenu, setShowMenu] = useState(false);
+
+  useEffect(() => {
+    if (showMenu) {
+      const closeMenu = () => setShowMenu(false);
+
+      document.addEventListener('click', closeMenu);
+
+      return () => document.removeEventListener('click', closeMenu);
+    }
+  }, [showMenu])
+
+  const openMenu = (e) => {
+    e.stopPropagation();
+    if(!showMenu) setShowMenu(true);
+  }
 
   const profileMenu = (
     <ul style={{ listStyle: 'none' }}>
@@ -16,7 +33,7 @@ const ProfileButton = ({ user }) => {
 
   return (
     <>
-      <button>
+      <button onClick={openMenu}>
         <svg xmlns="http://www.w3.org/2000/svg" width="22.4" height="25.6" viewBox="0 0 448 512">
           {/* Font Awesome Pro 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc.*/ }
           <path
@@ -24,7 +41,7 @@ const ProfileButton = ({ user }) => {
           />
         </svg>
       </button>
-      {profileMenu}
+      {showMenu && profileMenu}
     </>
   )
 }
