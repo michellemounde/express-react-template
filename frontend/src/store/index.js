@@ -15,7 +15,7 @@ const store = configureStore({
       const logger = require('redux-logger').default;
       return getDefaultMiddleware().concat(logger)
     } else {
-      getDefaultMiddleware();
+      return getDefaultMiddleware();
     }
   },
   preloadedState
