@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import { useDispatch } from 'react-redux';
 
 import { logout } from '../../store/session';
@@ -6,10 +6,15 @@ import { logout } from '../../store/session';
 const ProfileButton = ({ user }) => {
   const dispatch = useDispatch();
   const [showMenu, setShowMenu] = useState(false);
+  const dropdownRef = useRef();
 
   useEffect(() => {
     if (showMenu) {
-      const closeMenu = () => setShowMenu(false);
+      const closeMenu = (e) => {
+        if (!dropdownRef.current.contains(e.target)) {
+          setShowMenu(false);
+        }
+      }
 
       document.addEventListener('click', closeMenu);
 
@@ -23,7 +28,7 @@ const ProfileButton = ({ user }) => {
   }
 
   const profileMenu = (
-    <ul style={{ listStyle: 'none' }}>
+    <ul style={{ listStyle: 'none' }} ref={dropdownRef}>
       <li>{user.username}</li>
       <li>{user.firstName} {user.lastName}</li>
       <li>{user.email}</li>
