@@ -14,6 +14,8 @@ const store = configureStore({
     if (process.env.NODE_ENV !== 'production') {
       const logger = require('redux-logger').default;
       return getDefaultMiddleware().concat(logger)
+    } else {
+      getDefaultMiddleware();
     }
   },
   preloadedState
