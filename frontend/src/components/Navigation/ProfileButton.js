@@ -1,6 +1,10 @@
 import { useState, useEffect, useRef } from 'react'
 import { useDispatch } from 'react-redux';
 
+import OpenModalButton from '../OpenModalButton';
+import LoginFormModal from '../LoginFormModal';
+import SignupFormModal from '../SignupFormModal';
+
 import { logout } from '../../store/session';
 
 const ProfileButton = ({ user }) => {
@@ -27,13 +31,20 @@ const ProfileButton = ({ user }) => {
     if(!showMenu) setShowMenu(true);
   }
 
-  const profileMenu = (
-    <ul style={{ listStyle: 'none' }} ref={dropdownRef}>
+  const profileMenu = ( user &&
+    <>
       <li>{user.username}</li>
       <li>{user.firstName} {user.lastName}</li>
       <li>{user.email}</li>
       <li><button onClick={() => dispatch(logout())}>Log Out</button></li>
-    </ul>
+    </>
+  )
+
+  const registrations = (
+    <>
+      <li><OpenModalButton buttonText='Log In' modalComponent={<LoginFormModal />}/></li>
+      <li><OpenModalButton buttonText='Sign Up' modalComponent={<SignupFormModal />}/></li>
+    </>
   )
 
   return (
@@ -46,7 +57,9 @@ const ProfileButton = ({ user }) => {
           />
         </svg>
       </button>
-      {showMenu && profileMenu}
+      <ul style={{ listStyle: 'none' }} ref={dropdownRef}>
+        {user ? showMenu && profileMenu : showMenu && registrations}
+      </ul>
     </>
   )
 }
