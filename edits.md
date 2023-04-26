@@ -58,5 +58,5 @@ fetch('/api/test', {
 
 ## Frontend
 
-### server
-Remember to restart the frontend server after you make any edits to the package.json file.
+### React
+- edit public folder
