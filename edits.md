@@ -17,7 +17,7 @@ Each time you get your calendar reminder, follow the steps below.
 
 ## Backend
 
-### Tesing routes with fetch
+### Testing routes with fetch
 /*
 const { csrfToken } = await fetch('/api/csrf/restore').then(res => res.json());
 

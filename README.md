@@ -1,1 +1,1 @@
-# Express React Skeleton
+# Express React Template

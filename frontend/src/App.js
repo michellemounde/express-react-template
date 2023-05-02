@@ -20,11 +20,11 @@ function App() {
   return isLoaded && (
     <>
       <Navigation isLoaded={isLoaded} />
-      <h1>Express React Skeleton</h1>
       {isLoaded && (
         <Switch>
        </Switch>
       )}
+      <h1>Express React Template</h1>
     </>
   );
 }
